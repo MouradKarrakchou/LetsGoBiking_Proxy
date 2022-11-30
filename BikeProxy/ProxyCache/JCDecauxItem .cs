@@ -18,6 +18,7 @@ namespace ProxyCache
             JcdecauxToolProxy jcdecaux = new JcdecauxToolProxy();
             Task<String> result = JCDecauxAPICall(requestItem);
             item = JsonConvert.DeserializeObject<T>(result.Result);
+            Console.WriteLine("");
         }
         static async Task<string> JCDecauxAPICall(string request)
         {
