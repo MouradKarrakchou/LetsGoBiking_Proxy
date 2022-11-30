@@ -39,7 +39,7 @@ namespace ProxyCache
                 JcdecauxToolProxy jcdecauxTool = new JcdecauxToolProxy();
 
                 item = new JCDecauxItem<T>(CacheItemName);
-                cache.Add(CacheItemName, item, policy);
+                cache.Set(CacheItemName, item.getItem(), policy);
             }
             fileContents = cache[CacheItemName] as T;
             return (fileContents);
