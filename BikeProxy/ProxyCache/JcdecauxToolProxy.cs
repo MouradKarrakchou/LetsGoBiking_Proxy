@@ -9,7 +9,7 @@ using System.Net.Http;
 // (right-click on the project --> (add --> Reference) or Manage NuGet packages).
 // GeoCordinates is in the System.Device.Location namespace, coming from System.Device which is an assembly reference.
 using System.Device.Location;
-using Newtonsoft.Json;
+using System.Text.Json;
 using Newtonsoft.Json.Serialization;
 //
 namespace ProxyCache
@@ -29,24 +29,25 @@ namespace ProxyCache
         {
             query = "apiKey=" + apiKey;
             url = "https://api.jcdecaux.com/vls/v3/contracts";
-            string request = JCDecauxAPICall(url, query);
-            GenericProxyCache<List<JCDContract>> genericProxyCache = new GenericProxyCache<List<JCDContract>>();
-            List<JCDContract> allContracts = genericProxyCache.Get(request);
+            response = JCDecauxAPICall(url, query).Result;
+            List<JCDContract> allContracts = JsonSerializer.Deserialize<List<JCDContract>>(response);
             return (allContracts);
         }
         public List<JCDStation> getStations(string contract)
         {
             url = "https://api.jcdecaux.com/vls/v3/stations";
             query = "contract=" + contract + "&apiKey=" + apiKey;
-            string request = JCDecauxAPICall(url, query);
-            GenericProxyCache<List<JCDStation>> genericProxyCache= new GenericProxyCache<List<JCDStation>>();
-            List < JCDStation > allStations = genericProxyCache.Get(request);
-            return (allStations);
+            response = JCDecauxAPICall(url, query).Result;
+            List<JCDStation> allContracts = JsonSerializer.Deserialize<List<JCDStation>>(response);
+            return (allContracts);
         }
 
-        static string JCDecauxAPICall(string url, string query)
+        static async Task<string> JCDecauxAPICall(string url, string query)
         {
-            return (url + "?" + query);
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(url + "?" + query);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
         }
 
     }

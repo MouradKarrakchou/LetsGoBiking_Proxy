@@ -12,15 +12,18 @@ namespace ProxyCache
     public class Proxy : IProxy
     {
         JcdecauxToolProxy jcdecauxTool = new JcdecauxToolProxy();
-
+        GenericProxyCache<JCDecauxItemContract> genericProxyCacheContract;
+        GenericProxyCache<JCDecauxItemStations> genericProxyCacheStation;
         public List<JCDContract> getAllContracts()
         {
-            return(jcdecauxTool.getAllContracts());
+            genericProxyCacheContract = new GenericProxyCache<JCDecauxItemContract>();
+            return (genericProxyCacheContract.Get("contracts").contracts);
         }
 
         public List<JCDStation> getStations(string contract)
         {
-            return (jcdecauxTool.getStations(contract));
+            genericProxyCacheStation = new GenericProxyCache<JCDecauxItemStations>();
+            return (genericProxyCacheStation.Get(contract).stations);
         }
     }
 }

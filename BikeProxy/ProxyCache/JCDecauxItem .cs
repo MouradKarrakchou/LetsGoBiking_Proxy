@@ -9,27 +9,22 @@ using System.Net.Http;
 
 namespace ProxyCache
 {
-    internal class JCDecauxItem <T>
+    internal class JCDecauxItemContract
     {
-        T item;
-
-        public JCDecauxItem(string requestItem)
+        public List<JCDContract> contracts;
+        JcdecauxToolProxy jcdecauxToolProxy = new JcdecauxToolProxy();
+        public JCDecauxItemContract(List<Object> objects)
         {
-            JcdecauxToolProxy jcdecaux = new JcdecauxToolProxy();
-            Task<String> result = JCDecauxAPICall(requestItem);
-            item = JsonConvert.DeserializeObject<T>(result.Result);
-            Console.WriteLine("");
+            contracts = jcdecauxToolProxy.getAllContracts();
         }
-        static async Task<string> JCDecauxAPICall(string request)
+    }
+    internal class JCDecauxItemStations
+    {
+        public List<JCDStation> stations;
+        JcdecauxToolProxy jcdecauxToolProxy = new JcdecauxToolProxy();
+        public JCDecauxItemStations(List<Object> objects)
         {
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(request);
-            response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsStringAsync();
-        }
-        internal T getItem()
-        {
-            return item;
+            stations = jcdecauxToolProxy.getStations((String) objects[0]);
         }
     }
 }

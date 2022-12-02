@@ -29,17 +29,15 @@ namespace ProxyCache
         {
             ObjectCache cache = MemoryCache.Default;
             T fileContents = cache[CacheItemName] as T;
-            JCDecauxItem<T> item;
             if (fileContents == null)
             {
-                Console.WriteLine("updating cache");
+                Console.WriteLine("update Cache");
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.AbsoluteExpiration = dt;
-
-                JcdecauxToolProxy jcdecauxTool = new JcdecauxToolProxy();
-
-                item = new JCDecauxItem<T>(CacheItemName);
-                cache.Set(CacheItemName, item.getItem(), policy);
+                List<Object> args = new List<Object>();
+                args.Add(CacheItemName);
+                T obj = (T)Activator.CreateInstance(typeof(T), args);
+                cache.Set(CacheItemName, obj, policy);
             }
             fileContents = cache[CacheItemName] as T;
             return (fileContents);
