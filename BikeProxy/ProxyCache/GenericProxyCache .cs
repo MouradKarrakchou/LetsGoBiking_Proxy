@@ -40,7 +40,7 @@ namespace ProxyCache
                 cache.Set(CacheItemName, obj, policy);
             }
             fileContents = cache[CacheItemName] as T;
-            return (fileContents);
+            return fileContents;
         }
 
 

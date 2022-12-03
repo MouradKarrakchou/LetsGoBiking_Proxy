@@ -20,6 +20,23 @@ namespace ProxyCache
             return (genericProxyCacheContract.Get("contracts").contracts);
         }
 
+        public JCDContract getContract(string cityName)
+        {
+            genericProxyCacheContract = new GenericProxyCache<JCDecauxItemContract>();
+            List<JCDContract> contracts = genericProxyCacheContract.Get(cityName).contracts;
+            foreach (JCDContract c in contracts)
+            {
+                if (c.name == cityName)
+                    return c;
+                foreach (String city in c.cities)
+                {
+                    if (city == cityName)
+                        return c;
+                }
+            }
+            return null;
+        }
+
         public List<JCDStation> getStations(string contract)
         {
             genericProxyCacheStation = new GenericProxyCache<JCDecauxItemStations>();

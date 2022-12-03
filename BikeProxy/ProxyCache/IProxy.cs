@@ -18,6 +18,9 @@ namespace ProxyCache
         [OperationContract]
         List<JCDStation> getStations(string contract);
 
+        [OperationContract]
+        JCDContract getContract(string cityName);
+
         // TODO: ajoutez vos opérations de service ici
     }
 

@@ -55,6 +55,7 @@ namespace ProxyCache
     public class JCDContract
     {
         public string name { get; set; }
+        public string[] cities { get; set; }
     }
 
     public class JCDStation
