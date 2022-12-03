@@ -28,11 +28,12 @@ namespace ProxyCache
             {
                 if (c.name == cityName)
                     return c;
-                foreach (String city in c.cities)
-                {
-                    if (city == cityName)
-                        return c;
-                }
+                if(c.cities != null)
+                    foreach (String city in c.cities)
+                    {
+                        if (city == cityName)
+                            return c;
+                    }
             }
             return null;
         }
