@@ -26,7 +26,7 @@ namespace ProxyCache
             List<JCDContract> contracts = genericProxyCacheContract.Get(cityName).contracts;
             foreach (JCDContract c in contracts)
             {
-                if (c.name == cityName)
+                if (c.name == cityName.ToLower())
                     return c;
                 if(c.cities != null)
                     foreach (String city in c.cities)

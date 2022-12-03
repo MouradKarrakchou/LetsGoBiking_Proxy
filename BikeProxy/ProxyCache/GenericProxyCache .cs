@@ -36,10 +36,9 @@ namespace ProxyCache
                 policy.AbsoluteExpiration = dt;
                 List<Object> args = new List<Object>();
                 args.Add(CacheItemName);
-                T obj = (T)Activator.CreateInstance(typeof(T), args);
-                cache.Set(CacheItemName, obj, policy);
+                fileContents = (T)Activator.CreateInstance(typeof(T), args);
+                cache.Set(CacheItemName, fileContents, policy);
             }
-            fileContents = cache[CacheItemName] as T;
             return fileContents;
         }
 

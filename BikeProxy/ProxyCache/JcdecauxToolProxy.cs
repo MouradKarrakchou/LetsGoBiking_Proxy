@@ -38,8 +38,10 @@ namespace ProxyCache
             url = "https://api.jcdecaux.com/vls/v3/stations";
             query = "contract=" + contract + "&apiKey=" + apiKey;
             response = JCDecauxAPICall(url, query).Result;
-            List<JCDStation> allContracts = JsonSerializer.Deserialize<List<JCDStation>>(response);
-            return (allContracts);
+            List<JCDStation> allStations = JsonSerializer.Deserialize<List<JCDStation>>(response);
+            List<JCDStation> stationsWIthBike = new List<JCDStation>();
+           
+            return (allStations);
         }
 
         static async Task<string> JCDecauxAPICall(string url, string query)
@@ -62,12 +64,32 @@ namespace ProxyCache
     {
         public int number { get; set; }
         public string name { get; set; }
+        public string contractName { get; set; }        
         public Position position { get; set; }
+        public MainStands mainStands { get; set; }
+
 
         internal GeoCoordinate getGeoCoord()
         {
             return new GeoCoordinate(position.latitude, position.longitude);
         }
+        internal int getNumberOfAvailableBike()
+        {
+            return mainStands.availabilities.bikes;
+        }
+        internal int getNumberOfAvailableStand()
+        {
+            return mainStands.availabilities.stands;
+        }
+    }
+    public class MainStands
+    {
+        public Availabilities availabilities { get; set; }
+    }
+    public class Availabilities
+    {
+        public int bikes { get; set; }
+        public int stands { get; set; }
     }
 
     public class Position
