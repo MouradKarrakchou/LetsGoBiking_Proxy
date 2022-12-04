@@ -17,13 +17,17 @@ namespace ProxyCache
         public List<JCDContract> getAllContracts()
         {
             genericProxyCacheContract = new GenericProxyCache<JCDecauxItemContract>();
-            return (genericProxyCacheContract.Get("contracts").contracts);
+            string cacheItemName = "contracts";
+            List<Object> args = new List<Object>() { cacheItemName };
+            return genericProxyCacheContract.Get("contracts", args).contracts;
         }
 
         public JCDContract getContract(string cityName)
         {
             genericProxyCacheContract = new GenericProxyCache<JCDecauxItemContract>();
-            List<JCDContract> contracts = genericProxyCacheContract.Get(cityName).contracts;
+            string cacheItemName = cityName;
+            List<Object> args = new List<Object>() { cacheItemName };
+            List<JCDContract> contracts = genericProxyCacheContract.Get(cityName, args).contracts;
             foreach (JCDContract c in contracts)
             {
                 if (c.name == cityName.ToLower())
@@ -40,8 +44,10 @@ namespace ProxyCache
 
         public List<JCDStation> getStations(string contract)
         {
+            string cacheItemName = contract;
+            List<Object> args = new List<Object>() { cacheItemName };
             genericProxyCacheStation = new GenericProxyCache<JCDecauxItemStations>();
-            return (genericProxyCacheStation.Get(contract).stations);
+            return (genericProxyCacheStation.Get(contract, args).stations);
         }
     }
 }

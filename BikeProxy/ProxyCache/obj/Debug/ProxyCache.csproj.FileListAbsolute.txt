@@ -27,3 +27,13 @@ D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\obj\Debug
 D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\obj\Debug\ProxyCache.csproj.CopyComplete
 D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\obj\Debug\ProxyCache.dll
 D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\obj\Debug\ProxyCache.pdb
+D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\bin\Debug\System.Text.Encodings.Web.dll
+D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\bin\Debug\System.Text.Json.dll
+D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\bin\Debug\System.ValueTuple.dll
+D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\bin\Debug\System.Text.Encodings.Web.xml
+D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\bin\Debug\System.Text.Json.xml
+D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Polytech\SI4\S7\MiddleWare\BikeProxy\BikeProxy\BikeProxy\ProxyCache\bin\Debug\System.ValueTuple.xml
