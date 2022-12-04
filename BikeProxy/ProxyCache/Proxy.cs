@@ -18,15 +18,15 @@ namespace ProxyCache
         {
             genericProxyCacheContract = new GenericProxyCache<JCDecauxItemContract>();
             string cacheItemName = "contracts";
-            object[] args = new object[1] { cacheItemName };
-            return (genericProxyCacheContract.Get("contracts", args).contracts);
+            List<Object> args = new List<Object>() { cacheItemName };
+            return genericProxyCacheContract.Get("contracts", args).contracts;
         }
 
         public JCDContract getContract(string cityName)
         {
             genericProxyCacheContract = new GenericProxyCache<JCDecauxItemContract>();
             string cacheItemName = cityName;
-            object[] args = new object[1] { cacheItemName };
+            List<Object> args = new List<Object>() { cacheItemName };
             List<JCDContract> contracts = genericProxyCacheContract.Get(cityName, args).contracts;
             foreach (JCDContract c in contracts)
             {
@@ -45,7 +45,7 @@ namespace ProxyCache
         public List<JCDStation> getStations(string contract)
         {
             string cacheItemName = contract;
-            object[] args = new object[1] { cacheItemName };
+            List<Object> args = new List<Object>() { cacheItemName };
             genericProxyCacheStation = new GenericProxyCache<JCDecauxItemStations>();
             return (genericProxyCacheStation.Get(contract, args).stations);
         }
