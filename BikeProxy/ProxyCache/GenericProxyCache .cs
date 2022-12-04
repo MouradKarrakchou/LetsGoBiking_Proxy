@@ -11,21 +11,21 @@ namespace ProxyCache
         DateTimeOffset expirationTime = DateTimeOffset.Now.AddMinutes(1);
 
 
-        public T Get(string CacheItemName) {
-            return useCache(CacheItemName, dt_default);
+        public T Get(string CacheItemName, object[] args) {
+            return useCache(CacheItemName, dt_default, args);
 
         }
-        public T Get(string CacheItemName, double dt_seconds) {
+        public T Get(string CacheItemName, double dt_seconds, object[] args) {
             DateTimeOffset dt = DateTime.Now.AddSeconds(dt_seconds); //In this case, the Expiration Time is "dt_default"
-            return useCache(CacheItemName, dt);
+            return useCache(CacheItemName, dt, args);
 
         }
-        public T Get(string CacheItemName, DateTimeOffset dt) {
-             return useCache(CacheItemName, dt);
+        public T Get(string CacheItemName, DateTimeOffset dt, object[] args) {
+             return useCache(CacheItemName, dt, args);
         }
 
 
-        private T useCache(string CacheItemName, DateTimeOffset dt) 
+        private T useCache(string CacheItemName, DateTimeOffset dt, object[] args) 
         {
             ObjectCache cache = MemoryCache.Default;
             T fileContents = cache[CacheItemName] as T;
@@ -34,8 +34,6 @@ namespace ProxyCache
                 Console.WriteLine("update Cache");
                 CacheItemPolicy policy = new CacheItemPolicy();
                 policy.AbsoluteExpiration = dt;
-                List<Object> args = new List<Object>();
-                args.Add(CacheItemName);
                 fileContents = (T)Activator.CreateInstance(typeof(T), args);
                 cache.Set(CacheItemName, fileContents, policy);
             }
